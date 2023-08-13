@@ -1,0 +1,11 @@
+https://www.geeksforgeeks.org/first-uppercase-letter-in-a-string-iterative-and-recursive/
+ 
+ public static char firstcapitalletter(String S, int index){
+        if(S.charAt(index) == '0'){
+            return 0;
+        }
+        if (Character.isUpperCase(S.charAt(index))){
+            return S.charAt(index);
+        }
+        return firstcapitalletter(S,index+1);
+    }
