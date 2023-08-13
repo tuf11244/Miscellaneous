@@ -1,0 +1,11 @@
+https://www.codechef.com/problems/FIBXOR01/
+
+public static int specialFibonacci(int a, int b, int n){
+        if(n == 0){
+           return a; 
+        }
+        if (n == 1){
+            return b;
+        }
+        return specialFibonacci(a,b,n-1) ^ specialFibonacci(a,b,n-2);
+    }
