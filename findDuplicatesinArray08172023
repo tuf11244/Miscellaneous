@@ -1,0 +1,25 @@
+//Find Duplicates in the Array.
+ 
+ public static void findDuplicates(int[] arr){
+	    ArrayList<Integer> list = new ArrayList<Integer>();
+	    for(int i = 0; i < arr.length;i++){
+	        for(int j = i+1; j < arr.length;j++){
+	            if(arr[i] > arr[j]){
+	                int temp = arr[i];
+	                arr[i] = arr[j];
+	                arr[j] = temp;
+	           }
+	            }
+	        }
+	        for(int element : arr){
+	            System.out.print(element + " ");
+	            
+	        }
+	        
+	        for(int index = 0; index < arr.length;index++){
+	            if(index+1 < arr.length && arr[index] == arr[index+1]){
+	                list.add(arr[index]);
+	            }
+	        }
+	        System.out.println(list);
+	    }
