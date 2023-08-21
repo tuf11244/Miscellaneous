@@ -1,0 +1,66 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	//	System.out.println("The total sum is " + sum(0));
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("hello");
+		list.add("world");
+        list.add("nice");
+	//	System.out.println(reverseString(list));
+	//  sumIterative();
+	    System.out.println(lengthofString("Parth",0));
+	    
+	}
+	
+	public static int sum(int sum){
+	    Scanner console = new Scanner(System.in);
+	    System.out.println("Please enter a num");
+		int input = console.nextInt();
+		if(input == 13){
+		    return sum + 13;
+		}
+		sum = sum + input;
+		return sum(sum);
+	}
+	
+	public static ArrayList<String> reverseString(ArrayList<String> list){
+	    ArrayList<String> reverselist = new ArrayList<String>();
+	    String reverse = " ";
+	    for(String element : list){
+	        for(int i = element.length() -1; i >= 0;i--){
+	            reverse = reverse + element.charAt(i);
+	        }
+	          reverselist.add(reverse);
+	    }
+	    return reverselist;
+	}
+	
+	public static void sumIterative(){
+	    Scanner keyboard = new Scanner(System.in);
+	    int input = keyboard.nextInt();
+	    int sum = 0;
+	    boolean flag = true;
+	    while(flag){
+	         System.out.println("Please enter a num");
+	        input = keyboard.nextInt();
+	        sum = sum + input;
+	        if(input == 13){
+	            sum = sum + 13;
+	            flag = false;
+	        }
+	    }
+	    System.out.print(sum);
+	}
+	
+	public static int lengthofString(String S, int count){
+	    if(S.length() == 0){
+	        return count;
+	    }
+	    return lengthofString(S.substring(1),count+1);
+	}
+	
+	
+}
