@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/reverse-words-in-a-string-iii/
+import java.util.Arrays;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		String s = "God Ding";
+		String[] value = s.split(" ");
+		System.out.println(Arrays.toString(value));
+	//	System.out.println(reverse("Hello World"));
+	    System.out.println(helper(value));
+	    
+	}
+	public static String reverse(String S){
+	    String reverse = "";
+	    for(int i = S.length()-1;i>=0;i--){
+	        reverse = reverse + S.charAt(i);
+	    }
+	    return reverse;
+	}
+	public static String helper(String[] value){
+	    String originalReverse = "";
+	    for(int i = 0; i < value.length;i++){
+	        originalReverse = originalReverse + reverse(value[i]) + " ";
+	    }
+	    return originalReverse;
+	}
+
+}
