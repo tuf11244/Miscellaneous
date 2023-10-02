@@ -1,0 +1,37 @@
+//https://leetcode.com/problems/longest-common-prefix/
+public class Main {
+    public static void main(String[] args) {
+        String[] strings = {"flower", "flow", "flight"};
+        System.out.println(longestCommonPrefix(strings));
+    }
+
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        // Take the first string as the initial common prefix
+        String prefix = strs[0];
+
+        // Iterate through the array of strings starting from the second string
+        for (int i = 1; i < strs.length; i++) {
+            String current = strs[i];
+            int j = 0;
+
+            // Compare characters of the current string with the prefix
+            while (j < prefix.length() && j < current.length() && prefix.charAt(j) == current.charAt(j)) {
+                j++;
+            }
+
+            // Update the prefix to the common characters found so far
+            prefix = prefix.substring(0, j);
+
+            // If prefix becomes empty, there is no common prefix, return immediately
+            if (prefix.isEmpty()) {
+                return prefix;
+            }
+        }
+
+        return prefix;
+    }
+}
