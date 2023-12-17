@@ -1,0 +1,60 @@
+//https://leetcode.com/problems/the-kth-factor-of-n/?envType=study-plan-v2&envId=amazon-spring-23-high-frequency
+//Leetcode 1492
+import java.util.ArrayList;
+import java.util.List;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		System.out.println(kthFactors(4,4));
+	}
+	public static int kthFactors(int n, int k){
+	    List<Integer> factors = new ArrayList<>();
+        for(int i = 1; i <= n; i++){
+            if(n%i == 0){
+                factors.add(i);
+            }
+        }
+        //System.out.println(factors);
+        for(int j = 0; j < factors.size(); j++){
+            if (j == k - 1){
+               return factors.get(j);
+            }
+        }
+        return -1;
+	}
+}
+
+//***Optimized Time Functionality*****//
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+        System.out.println(kthFactor(4, 4));
+    }
+
+    public static int kthFactor(int n, int k) {
+        List<Integer> factors = new ArrayList<>();
+
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                factors.add(i);
+
+                // Avoid adding duplicate factors for perfect squares
+                if (n / i != i) {
+                    factors.add(n / i);
+                }
+            }
+        }
+
+        if (k <= factors.size()) {
+            return factors.get(k - 1);
+        } else {
+            return -1;
+        }
+    }
+}
+
