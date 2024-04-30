@@ -1,0 +1,95 @@
+import java.util.*;
+This code doesn;t give correct output
+Date: 04/29/2024
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		int[][] grid = {
+		    {2,1,1},
+		    {1,1,0},
+		    {0,1,1}
+		};
+		
+		int ans = rottenOranges(grid);
+		System.out.println(ans);
+		for(int[] arr : grid){
+		    System.out.println(Arrays.toString(arr));
+		}
+	}
+	public static int direction[][] = {
+	    {0,1},
+	    {1,0},
+	    {-1,0},
+	    {0,-1}
+	};
+	public static int rottenOranges(int[][] grid){
+	    Set<spair> set = new HashSet<>();
+	    Queue<qpair> queue = new LinkedList<>();
+	    
+	    for(int i = 0; i < grid.length;i++){
+	        for(int j = 0 ; j  < grid[0].length;j++){
+	            if(grid[i][j] == 2){
+	                queue.add(new qpair(i,j,0));
+	            } else if(grid[i][j] == 0){
+	                set.add(new spair(i,j));
+	            }
+	        }
+	    }
+	    
+	    while(!queue.isEmpty()){
+	        qpair rem = queue.poll();
+	        set.add(new spair(rem.row,rem.column)); //mark it as visited;
+	        
+	        if(set.size() == grid.length * grid[0].length){
+	            System.out.println(set);
+	            return rem.time;
+	        }
+	        
+	        for(int i = 0; i < 4; i++){
+	            int rowdash = rem.row + direction[i][0];
+	            int coldash = rem.column + direction[i][1];
+	            spair pair = new spair(rowdash,coldash);
+	            if(isValid(grid,rowdash,coldash) && !set.contains(pair) && grid[rowdash][coldash] == 1){
+	                set.add(pair);
+	                queue.add(new qpair(rowdash,coldash,rem.time+1));
+	                grid[rowdash][coldash] = 2;
+	            }
+	        }
+	    }
+	    
+	 return -1; 
+	}
+	
+	public static boolean isValid(int[][] grid, int row, int column){
+	    return row >= 0 && row < grid.length && column >= 0 && column < grid[0].length;
+	}
+	
+}
+
+class spair{
+    int row;
+    int column;
+    
+    public spair(int row, int column){
+        this.row = row;
+        this.column = column;
+    }
+    
+    public String toString(){
+        return row + "  " + column;
+    }
+}
+
+class qpair{
+    int row;
+    int column;
+    int time;
+    
+    public qpair(int row, int column, int time){
+        this.row = row;
+        this.column = column;
+        this.time = time +1;
+    }
+    
+}
